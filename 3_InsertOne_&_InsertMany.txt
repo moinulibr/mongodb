@@ -1,0 +1,47 @@
+InsertOne & InsertMany
+
+InsertOne document
+----------------------------------------------
+
+Commands
+
+db.<collection-name>.insertOne(
+    {field1: "", field2: "", ..., fieldN: ""}
+)
+
+Example:
+
+db.students.insertOne(
+    {name: "Jayanta Biswas", age: 80, course: "BSc"}
+)
+
+InsertMany documents
+----------------------------------------------
+
+Commands
+
+db.<collection-name>.insertMany([
+    {field1: "", field2: "", ..., fieldN: ""},
+    {field1: "", field2: "", ..., fieldN: ""},
+    {field1: "", field2: "", ..., fieldN: ""},
+    ...
+])
+
+Example:
+
+db.students.insertOne([
+    {name: "Robin Biswas", age: 70, course: "BBA"},
+    {name: "Sagor Biswas", age: 60, course: "BSc"},
+    {name: "Partho Biswas", age: 50, course: "BSc"},
+])
+
+Check all data in collection
+----------------------------------------------
+
+Commands
+
+db.<collection-name>.find()
+
+Example:
+
+db.students.find()

@@ -1,0 +1,28 @@
+Find & FindOne
+
+Get all data from collection
+----------------------------------------------
+
+Commands
+
+db.<collection-name>.find()
+
+Example:
+
+db.students.find()
+
+
+Find one data using condition
+----------------------------------------------
+
+Commands
+
+db.<collection-name>.findOne({
+    field: "value"
+})
+
+Example:
+
+db.students.findOne({
+    name: "Jayanta Biswas"
+})

@@ -1,0 +1,57 @@
+Create Database & Collections
+
+Create Databases + Switch to another db
+----------------------------------------------
+
+Commands
+
+> use <db-name>
+
+Example:
+
+> use school
+
+
+Create new Collection
+--------------------------------------
+
+Commands
+
+> db.createCollection("<collection-name>")
+
+Example:
+
+> db.createCollection("allStudents")
+> db.createCollection("teachers")
+
+Show all Databases:
+-----------------------------------
+> show dbs
+
+Check current Databases:
+-----------------------------------
+> db
+
+Need help related to Database:
+---------------------------------------------
+> db.help()
+
+Need help related to Collection:
+---------------------------------------------
+> db.<collection-name>.help()
+
+Example:
+> db.allStudents.help()
+> db.teachers.help()
+
+Show all Collections
+---------------------------
+> show collections
+
+Change Collection name:
+-------------------------------
+> db.<old-collection-name>.renameCollection("<new-collection-name>")
+
+Example:
+
+> db.allStudents.renameCollection("students")

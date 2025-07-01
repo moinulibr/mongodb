@@ -1,0 +1,37 @@
+Setup & Installation
+
+## Installation
+
+MongoDB Community Server Download
+
+https://www.mongodb.com/try/download/community-kubernetes-operator
+
+- MongoDB Community Server
+- GUI - Compass
+
+## Tools
+
+### MongoDB Shell Download
+
+https://www.mongodb.com/try/download/shell
+
+### MongoDB Atlas CLI Download
+
+https://www.mongodb.com/try/download/atlascli
+
+## Commands
+
+Start Mongodb in terminal
+-------------------------------------
+
+> mongosh
+
+Check server port
+----------------------------------------------
+
+> db.serverCmdLineOpts().parsed.net.port
+
+Show all Databases
+----------------------------------------------
+
+> show dbs

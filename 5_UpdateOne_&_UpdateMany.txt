@@ -1,0 +1,49 @@
+UpdateOne & UpdateMany and ReplaceOne
+-----------------------------------------
+db.<collection-name>.updateOne(<filter>,<update>,<option>)
+db.<collection-name>.updateMany(<filter>,<update>,<option>)
+db.<collection-name>.replaceOne(<filter>,<update>,<option>)
+
+
+UpdateOne 
+----------------------------------------------
+Commands
+
+db.<collection-name>.updateOne(<filter>,<update>,<option>)
+ 
+Example:
+
+db.students.updateOne(
+	{ name: "Moinul" },
+  	{ $set: { age: 27 } }
+)
+
+
+UpdateMany
+----------------------------------------------
+Commands
+
+db.<collection-name>.updateMany(<filter>,<update>,<option>)
+ 
+Example:
+
+db.students.updateOne(
+	{ name: "Moinul" },
+  	{ $set: { age: 27 } }
+)
+
+
+
+ReplaceOne 
+----------------------------------------------
+Commands
+
+db.<collection-name>.replaceOne(<filter>,<update>,<option>)
+ 
+Example:
+
+db.students.replaceOne(
+	{ name: "Moinul" },
+  	{ age: 40 } }
+)
+

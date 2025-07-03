@@ -1,0 +1,41 @@
+DeleteOne & DeleteMany
+-----------------------------------------
+
+
+DeleteOne 
+----------------------------------------------
+Commands
+
+db.students.deleteOne(...)
+
+Example:
+
+db.students.deleteOne({status:"Pending"}); //single record will be deleted
+
+
+
+DeleteMany
+----------------------------------------------
+Commands
+
+db.students.deleteMany(...)
+
+Example:
+
+db.students.deleteMany({}); //all records will be deleted
+
+db.students.deleteMany({status:"Pending"}); //all pendings record will be deleted
+
+
+
+
+findOneAndDelete 
+----------------------------------------------
+Commands
+
+db.students.findOneAndDelete (...)
+
+Example:
+
+db.students.findOneAndDelete({status:"Pending"}); //single record will be deleted
+

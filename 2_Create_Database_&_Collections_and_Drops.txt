@@ -1,8 +1,7 @@
-Create Database & Collections
+Create Database & Collections And Drop Database and Collection
 
 Create Databases + Switch to another db
 ----------------------------------------------
-
 Commands
 
 > use <db-name>
@@ -14,7 +13,6 @@ Example:
 
 Create new Collection
 --------------------------------------
-
 Commands
 
 > db.createCollection("<collection-name>")
@@ -24,17 +22,21 @@ Example:
 > db.createCollection("allStudents")
 > db.createCollection("teachers")
 
+
 Show all Databases:
 -----------------------------------
 > show dbs
+
 
 Check current Databases:
 -----------------------------------
 > db
 
+
 Need help related to Database:
 ---------------------------------------------
 > db.help()
+
 
 Need help related to Collection:
 ---------------------------------------------
@@ -44,9 +46,12 @@ Example:
 > db.allStudents.help()
 > db.teachers.help()
 
+
+
 Show all Collections
 ---------------------------
 > show collections
+
 
 Change Collection name:
 -------------------------------
@@ -55,3 +60,26 @@ Change Collection name:
 Example:
 
 > db.allStudents.renameCollection("students")
+
+
+
+Drop Database
+---------------------------
+> show collections
+
+
+Drop Database
+---------------------------
+> db.dropDatabase()
+Example
+> use school  (from currentdatabase)
+> db.dropDatabase();
+
+
+
+Drop Collection
+---------------------------
+> db.<collection-name>.drop()
+Example
+> db.students.drop();
+

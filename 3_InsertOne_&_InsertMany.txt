@@ -12,7 +12,7 @@ db.<collection-name>.insertOne(
 Example:
 
 db.students.insertOne(
-    {name: "Jayanta Biswas", age: 80, course: "BSc"}
+    {name: "Moinul Islam", age: 32, course: "BSc"}
 )
 
 InsertMany documents
@@ -30,9 +30,9 @@ db.<collection-name>.insertMany([
 Example:
 
 db.students.insertOne([
-    {name: "Robin Biswas", age: 70, course: "BBA"},
-    {name: "Sagor Biswas", age: 60, course: "BSc"},
-    {name: "Partho Biswas", age: 50, course: "BSc"},
+    {name: "Rezaul", age: 70, course: "BBA"},
+    {name: "Manik", age: 60, course: "BSc"},
+    {name: "Mamun", age: 50, course: "BSc"},
 ])
 
 Check all data in collection

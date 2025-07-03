@@ -1,0 +1,14 @@
+	
+	
+$gt	greater than (>)
+$lt	less than (<)
+$gte	greater than or equal (>=)
+$lte	less than or equal (<=)
+$eq	equal to (==)
+$ne	not equal (!=)
+$in	array এর মধ্যে আছে কিনা
+$nin	array এর মধ্যে নেই এমন
+$and	AND কন্ডিশন
+$or	OR কন্ডিশন	
+	
+	

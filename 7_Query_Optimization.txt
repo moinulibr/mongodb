@@ -6,12 +6,45 @@ Query Optimization
  db.collection.find.({}).explain("executionStats"); [to show more details query]
 
 
-DeleteOne 
+Create Index 
 ----------------------------------------------
 Commands
 
-db.students.deleteOne(...)
+db.<collection>.createIndex({field:1})
+
+db.students.createIndex({status:1})
 
 Example:
+db.students.createIndex({status:1})
+db.students.find({status:"Pending"});
 
-db.students.deleteOne({status:"Pending"}); //single record will be deleted
+
+
+
+
+Drop Index 
+----------------------------------------------
+Commands
+
+ db.<collection>.dropIndex({field:1})
+
+ db.students.dropIndex({status:1})
+
+Example:
+db.students.dropIndex({status:1})
+db.students.find({status:"Pending"});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

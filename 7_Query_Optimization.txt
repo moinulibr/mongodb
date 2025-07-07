@@ -1,0 +1,17 @@
+Query Optimization
+-----------------------------------------
+
+ db.collection.find.({}).explain(); [to show more details query]
+	................executionStats
+ db.collection.find.({}).explain("executionStats"); [to show more details query]
+
+
+DeleteOne 
+----------------------------------------------
+Commands
+
+db.students.deleteOne(...)
+
+Example:
+
+db.students.deleteOne({status:"Pending"}); //single record will be deleted

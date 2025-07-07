@@ -1,0 +1,5 @@
+	collection import
+--------------------------------------------------------------------------
+	mongoimport --db my_database --collection zips --file zips.json
+
+						--zips [--file = which file to import]

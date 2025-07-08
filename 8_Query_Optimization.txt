@@ -36,9 +36,9 @@ db.students.find({status:"Pending"});
 
 
 
+-----------------------------------------
  config.set('displayBatchSize',500);
-
-
+------------------------------------------
 
 
 Limit

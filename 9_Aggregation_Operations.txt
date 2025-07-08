@@ -1,0 +1,63 @@
+Aggregation Operation
+-----------------------------------------
+
+
+Aggregate
+----------------------------------------------
+Commands
+
+db.<collection>.aggregate([{$match:{field:"value"}}])
+db.<collection>.aggregate([{$match:{field:"value"}},{
+  $group:{
+	  _id : <expression>, //group key
+	  <field1>:{<accumulator1> : <expression1>},
+	  .......
+	}
+}])
+-----
+db.students.aggregate([{$match:{status:"pending"}}])
+//to count 
+db.students.aggregate([{$match:{status:"pending"}},{
+  $group:{
+	  _id : null, //group key
+	  count:{$count :{}},
+	}
+}])
+
+Example:
+db.students.aggregate([{$match:{status:"pending"}}])
+-----
+
+//to count 
+db.students.aggregate([{$match:{status:"pending"}},{
+  $group:{
+	  _id : null, //group key
+	  count:{$count :{}},
+	}
+}])
+
+
+
+example- 2
+----------
+db.sales.aggregate([{
+  $group:{
+	  _id : "$item", //group key
+	  totalSaleAmount:{$sum :{$multiply:["$price","$quantity"]}},
+	}
+}
+,{$match:{totalSaleAmount:{$gte : 100}}}
+])
+
+
+
+
+
+
+
+
+
+
+
+
+

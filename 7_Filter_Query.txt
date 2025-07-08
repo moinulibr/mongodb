@@ -77,7 +77,7 @@ $or	OR কন্ডিশন
 	------- x----------
 
 	
-	Sorting & Pagination
+	Sorting
 --------------------------------------------------------------
 	db.users.find().sort({ name: 1 }) // A -> Z
 	db.users.find().sort({ name: -1 })// Z -> A
@@ -90,10 +90,27 @@ $or	OR কন্ডিশন
 	//আগে বয়স অনুযায়ী, তারপর একই বয়সের মধ্যে নাম অনুযায়ী সাজাবে।
 	db.users.find().sort({ age: 1, name: 1 })//একাধিক ফিল্ডে sort (age ও name):
 
+	------ x--------
+
+	
+	Pagination
+----------------------------------------------------
+	db.users.find().limit(10) //প্রথম ১০টা ইউজার দেখাবে
+
+	১১–২০ নাম্বার ডেটা (দ্বিতীয় পেজ)	
+	db.users.find().skip(10).limit(10)//১০টা স্কিপ করবে, পরের ১০টা দেখাবে।
+	
+	২১–৩০ নাম্বার ডেটা (তৃতীয় পেজ):
+	db.users.find().skip(20).limit(10)//২০টা স্কিপ করবে, পরের ১০টা দেখাবে।
 
 
+	Pagination Logic (client-side বা কোডে)
+	------
+	let page = 3;
+	let limit = 10;
+	let skip = (page - 1) * limit;
 
-
+	db.users.find().skip(skip).limit(limit);
 
 
 

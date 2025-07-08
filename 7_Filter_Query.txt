@@ -10,5 +10,96 @@ $in	array এর মধ্যে আছে কিনা
 $nin	array এর মধ্যে নেই এমন
 $and	AND কন্ডিশন
 $or	OR কন্ডিশন	
+
+
+
+
+	# Where condition [like - AND condtion]
+ ----------------------------------------------------
+	Command - 
+	db.<collection>.find({status:"pending"}); [here is condition - status == pending]
+
+	Example - 
+	------
+	db.students.find({status:"pending"}); 
+	----------------------- x -----------------
+
+
+
+	# Where condition, more then one [like - AND (more) condtion]
+ ----------------------------------------------------
+	Command - 
+	db.<collection>.find({status:"pending", age:20}); [here is condition - status == pending AND age == 20]
+
+	Example - 
+	------
+	db.students.find({status:"pending",age:20}); 
+	db.users.find({ age: { $lt: 30 } })
+	db.users.find({ name: { $regex: /^hasan$/i } }); //hasan, Hasan, HASAN
+	db.users.find({ age: { $gt: 25, $lt: 35 } })//age > 25 AND age < 35
+	db.users.find({
+  		$and: [
+    			{ age: { $gt: 20 } },
+    			{ age: { $lt: 30 } }
+  		     ]
+		})
+	----------------------- x -----------------
+
+
+
+
+	# Where In condition [like - Or condtion]
+ ----------------------------------------------------
+	Command - 
+	db.<collection>.find({age:{$gt:20}}); [here is condition - status == pending AND age == 20]
+
+	Example - 
+	------
+	db.users.find({ age: { $gt: 20, $lt: 30 } });
+	db.users.find({ $or: [ { age: 24 }, { name: "Hasan" } ] });
+	db.users.find({ name: { $regex: /^hasan$/i } }); //hasan, Hasan, HASAN
+	
+	db.users.find({ age: { $in: [22, 25, 30] } }) //যাদের বয়স ২২, ২৫, অথবা ৩০
+
+	db.users.find({ age: { $nin: [22, 25, 30] } })//যাদের বয়স ২২, ২৫, ৩০ না
+	----------------------- x -----------------
+
+	Text Matching with $regex
+	ছোট-বড় হরফ না দেখে match করা
+
+	db.users.find({ name: { $regex: /^hasan$/i } })//Hasan, hasan, HASAN — সব মিলে যাবে।
+
+	db.users.find({ name: { $regex: /^hasan$/i } })
+
+	কোন নামগুলো "ha" দিয়ে শুরু
+	db.users.find({ name: { $regex: /^ha/i } })//Hasan, Habib, Hamid ইত্যাদি।
+
+	------- x----------
+
+	
+	Sorting & Pagination
+--------------------------------------------------------------
+	db.users.find().sort({ name: 1 }) // A -> Z
+	db.users.find().sort({ name: -1 })// Z -> A
+
+
+	db.users.find().sort({ age: 1 })//বয়স অনুযায়ী ছোট থেকে বড়।
+
+	db.users.find().sort({ age: -1 })//বয়স অনুযায়ী বড় থেকে ছোট।
+	
+	//আগে বয়স অনুযায়ী, তারপর একই বয়সের মধ্যে নাম অনুযায়ী সাজাবে।
+	db.users.find().sort({ age: 1, name: 1 })//একাধিক ফিল্ডে sort (age ও name):
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	

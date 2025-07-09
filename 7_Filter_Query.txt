@@ -75,48 +75,23 @@ $or	OR কন্ডিশন
 	db.users.find({ name: { $regex: /^ha/i } })//Hasan, Habib, Hamid ইত্যাদি।
 
 	------- x----------
-
-	
-	Sorting
---------------------------------------------------------------
-	db.users.find().sort({ name: 1 }) // A -> Z
-	db.users.find().sort({ name: -1 })// Z -> A
-
-
-	db.users.find().sort({ age: 1 })//বয়স অনুযায়ী ছোট থেকে বড়।
-
-	db.users.find().sort({ age: -1 })//বয়স অনুযায়ী বড় থেকে ছোট।
-	
-	//আগে বয়স অনুযায়ী, তারপর একই বয়সের মধ্যে নাম অনুযায়ী সাজাবে।
-	db.users.find().sort({ age: 1, name: 1 })//একাধিক ফিল্ডে sort (age ও name):
-
-	------ x--------
-
-	
-	Pagination
-----------------------------------------------------
-	db.users.find().limit(10) //প্রথম ১০টা ইউজার দেখাবে
-
-	১১–২০ নাম্বার ডেটা (দ্বিতীয় পেজ)	
-	db.users.find().skip(10).limit(10)//১০টা স্কিপ করবে, পরের ১০টা দেখাবে।
-	
-	২১–৩০ নাম্বার ডেটা (তৃতীয় পেজ):
-	db.users.find().skip(20).limit(10)//২০টা স্কিপ করবে, পরের ১০টা দেখাবে।
-
-
-	Pagination Logic (client-side বা কোডে)
-	------
-	let page = 3;
-	let limit = 10;
-	let skip = (page - 1) * limit;
-
-	db.users.find().skip(skip).limit(limit);
-
-
-
-
-
-
-
 	
 	
+
+	Projection [select]
+-----------------------------------------------------------
+
+	db.users.find({}, { name: 1, age: 1 }) //এটা শুধু name ও age ফিল্ড দেখাবে - _id ডিফল্টভাবে থাকে
+	
+	db.users.find({}, { name: 1, age: 1, _id: 0 }) //_id ফিল্ডও hide করতে চাইলে:
+
+	//কেবল name বাদ দিয়ে বাকি সব
+	db.users.find({}, { name: 0 }) //কেবল name বাদ দিয়ে বাকি সব
+
+
+
+
+
+
+
+

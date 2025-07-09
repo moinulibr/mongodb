@@ -135,6 +135,89 @@ db.sales.aggregate([{
 
 
 
+	$lookup → Collection Join (like SQL JOIN)
+----------------------------------------------------------------------
+ধরো orders আর users নামে ২টা collection আছে।
+orders.userId → users._id এর সাথে match করবে।
+
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "users",
+      localField: "userId",
+      foreignField: "_id",
+      as: "user"
+    }
+  }
+])
+
+প্রত্যেক order-এর সাথে তার user info আসবে (array আকারে)
+	--------- x--------------
+
+
+	$facet → একই কোয়েরিতে multiple result
+------------------------------------------------------
+db.users.aggregate([
+  {
+    $facet: {
+      totalUsers: [ { $count: "count" } ],
+      byCity: [
+        { $group: { _id: "$city", count: { $sum: 1 } } }
+      ]
+    }
+  }
+])
+
+দুইটা রিপোর্ট একসাথে পাবে: total count + শহর অনুযায়ী হিসাব
+	-----x------
+
+
+	$bucket → Range-based Grouping
+----------------------------------------------------------
+
+db.users.aggregate([
+  {
+    $bucket: {
+      groupBy: "$age",
+      boundaries: [0, 18, 30, 50, 100],
+      default: "Others",
+      output: {
+        count: { $sum: 1 }
+      }
+    }
+  }
+])
+বয়সকে গ্রুপ করবে রেঞ্জ অনুযায়ী: 0–18, 18–30, ...
+-----x---------
+
+
+	$cond (if-else), $ifNull, $toDate — Smart Data Handling
+--------------------------------------------------------------------
+db.users.aggregate([
+  {
+    $project: {
+      status: {
+        $cond: {
+          if: { $gte: ["$age", 18] },
+          then: "Adult",
+          else: "Child"
+        }
+      },
+      createdAt: { $toDate: "$createdAtStr" },
+      city: { $ifNull: ["$city", "Unknown"] }
+    }
+  }
+])
+
+ব্যাখ্যা:
+
+age দেখে status ঠিক করবে (Adult/Child)
+
+createdAtStr কে Date বানাবে
+
+যদি city না থাকে তাহলে "Unknown" হবে
+
+
 
 
 

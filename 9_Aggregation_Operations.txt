@@ -219,6 +219,59 @@ createdAtStr কে Date বানাবে
 
 
 
+	$merge
+------------------------------------------
+Final result অন্য collection-এ insert/update করে।
+
+db.sales.aggregate([
+  { ... },
+  { $merge: "sales_report" }
+])
+
+
+
+	$out
+------------------------------------------------------
+Aggregation result কে একটা নতুন collection-এ লিখে দেয়।
+
+db.users.aggregate([
+  { ... },
+  { $out: "users_summary" }
+])
+
+
+
+	$count (shortcut to count)
+--------------------------------------------------
+db.users.aggregate([
+  { $match: { age: { $gte: 18 } } },
+  { $count: "totalAdults" }
+])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

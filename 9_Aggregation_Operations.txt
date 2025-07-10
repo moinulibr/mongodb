@@ -251,11 +251,40 @@ db.users.aggregate([
 
 
 
+	$replaceRoot
+------------------------------------------------
+বর্তমান ডকুমেন্টের root পরিবর্তন করে দেয়।
+
+
+	$map, $filter, $reduce
+----------------------------------------------------
+{
+  $project: {
+    productNames: {
+      $map: {
+        input: "$products",
+        as: "prod",
+        in: "$$prod.name"
+      }
+    }
+  }
+}
 
 
 
+	$set = $addFields, এবং $unset
+--------------------------------------------------
+
+{ $set: { ageGroup: "Young" } }
+{ $unset: "tempField" }
 
 
+	$sortByCount
+--------------------------------------------------
+গ্রুপ করে count করে, sort করেও দেয় একদম short version এ।
+db.users.aggregate([
+  { $sortByCount: "$city" }
+])
 
 
 
